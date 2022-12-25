@@ -1,27 +1,36 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Card from "react-bootstrap/Card";
-
 import "./App.css";
+import Julian, { JulianYear, JulianWeek, JulianDay } from "./Julian";
 
 function MeditationCard() {
   return (
-    <Card style={{ width: "50%" }}>
-      <Card.Body>
-        <Card.Title>Meditation Title</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          meditaiton subtitle
-        </Card.Subtitle>
-        <Card.Text>
-          <p>Anapanasati</p>
-        </Card.Text>
-        <Card.Link href="#">dhammatalks</Card.Link>
-        <Card.Link href="#">plum village</Card.Link>
-      </Card.Body>
-    </Card>
+    <>
+      <Container>
+        <Row>
+          <Col>
+            <Card style={{ width: "100%" }}>
+              <Card.Body>
+                <Card.Title>Meditation Title</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  meditaiton subtitle
+                </Card.Subtitle>
+                <Card.Text>
+                  <p>Anapanasati</p>
+                </Card.Text>
+                <Card.Link href="#">dhammatalks</Card.Link>
+                <Card.Link href="#">plum village</Card.Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
@@ -56,7 +65,15 @@ function ContainerFluid() {
             >
               meditation session planner
             </a>
-            <MeditationCard></MeditationCard>
+            <Col>
+              <MeditationCard></MeditationCard>
+              <hr />
+              <JulianYear />
+              <hr />
+              <JulianWeek />
+              <hr />
+              <JulianDay />
+            </Col>
           </header>
         </Col>
       </Row>
@@ -67,7 +84,7 @@ function ContainerFluid() {
 function App() {
   return (
     <div className="App">
-      <ContainerFluid></ContainerFluid>
+      <ContainerFluid />
     </div>
   );
 }

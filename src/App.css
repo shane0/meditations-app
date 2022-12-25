@@ -17,6 +17,14 @@
   color: royalblue;
 }
 
+.container .row .col {
+  align-items: center;
+  text-align: center;
+}
 .nav {
   background-color: burlywood;
+}
+
+.card {
+  align-items: center;
 }

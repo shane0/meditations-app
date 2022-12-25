@@ -24,6 +24,14 @@ function daysIntoYear(date) {
   );
 }
 
+function daysLeft(julianDay) {
+  return 365 - julianDay;
+}
+
+function weeksLeft(julianWeek) {
+  return 52 - julianWeek;
+}
+
 function JulianYear() {
   return (
     <div>
@@ -38,6 +46,8 @@ function JulianWeek() {
     <div>
       the julian week number is <br />
       {weekNumber} of 52
+      <br />
+      {weeksLeft(weekNumber)} weeks left in {yyyy}
     </div>
   );
 }
@@ -47,6 +57,8 @@ function JulianDay() {
     <div>
       the julian day number is <br />
       {julianDayNo} of 365
+      <br />
+      {daysLeft(julianDayNo)} days left in {yyyy}
     </div>
   );
 }

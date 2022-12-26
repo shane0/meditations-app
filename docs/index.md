@@ -1,5 +1,7 @@
 # docs/
 
+## design
+
 - sessions/
   - routes
     - sessions/ list all sessions

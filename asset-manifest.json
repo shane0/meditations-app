@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/meditations-app/static/css/main.9f9c2587.css",
-    "main.js": "/meditations-app/static/js/main.7650383e.js",
+    "main.css": "/meditations-app/static/css/main.8ca6fe6e.css",
+    "main.js": "/meditations-app/static/js/main.72f94cd3.js",
     "index.html": "/meditations-app/index.html",
-    "main.9f9c2587.css.map": "/meditations-app/static/css/main.9f9c2587.css.map",
-    "main.7650383e.js.map": "/meditations-app/static/js/main.7650383e.js.map"
+    "main.8ca6fe6e.css.map": "/meditations-app/static/css/main.8ca6fe6e.css.map",
+    "main.72f94cd3.js.map": "/meditations-app/static/js/main.72f94cd3.js.map"
   },
   "entrypoints": [
-    "static/css/main.9f9c2587.css",
-    "static/js/main.7650383e.js"
+    "static/css/main.8ca6fe6e.css",
+    "static/js/main.72f94cd3.js"
   ]
 }

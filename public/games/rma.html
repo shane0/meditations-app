@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Player</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/solar/bootstrap.min.css"
+            integrity="sha384-NCwXci5f5ZqlDw+m7FwZSAwboa0svoPPylIW3Nf+GBDsyVum+yArYnaFLE9UDzLd" crossorigin="anonymous">
+        <style>
+            canvas {
+                /* #586e75 #002b36; */
+                border: 2px solid #268bd2;
+                background-color: #586e75;
+                border-radius: 5px;
+                padding-top: 10px;
+            }
+
+            h1 {
+                color: #268bd2;
+            }
+
+            h3 {
+                color: #cb4b16;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <br>
+                    <div id="narration" class="alert alert-primary" role="alert">
+                    </div>
+                    <hr>
+                    <h3>energy</h3>
+                    <div class="progress">
+                        <div id='energyBar' class="progress-bar bg-warning" role="progressbar" aria-label=""
+                            style="width: 25%;" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h1>random meditation adventure</h1>
+                    <canvas id="canvas" width="430" height="430">
+                </div>
+                <div class="col-3">
+                    <div class="alert alert-info" id="island">
+                    </div>
+                    <br>
+                    <div class="alert alert-secondary" id="notification">
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                var c = document.getElementById('canvas');
+                var ctx = c.getContext('2d');
+                // Center
+                ctx.translate(200, 201);
+
+                function drawCartesianPoint(ctx, x, y) {
+                    ctx.fillRect(x, -(y), 4, 4);
+                }
+
+                function drawCartesianText(ctx, x, y, text) {
+                    ctx.fillText(text, x, -(y));
+                }
+
+                class island {
+                    constructor(islandName, x_max, y_max) {
+                        this.islandName = islandName
+                        this.northBoundry = y_max
+                        this.southBoundry = -y_max
+                        this.westBoundry = -x_max
+                        this.eastBoundry = x_max
+                        this.usedCoordinates = [] // each island has a set of used coordinates
+                    }
+                    useCoordinate(coordinate) {
+                        this.usedCoordinates.push(coordinate)
+                    }
+                    validateCoordinate(coordinate) {
+                        // returns true if coordinate is already used
+                        const validation = JSON.stringify(this.usedCoordinates).includes(JSON.stringify(coordinate));
+                        return validation
+                    }
+                    generateCoordinate() {
+                        let randoX = Math.floor(Math.random() * (this.eastBoundry - this.westBoundry + 1) + this.westBoundry)
+                        let randoY = Math.floor(Math.random() * (this.northBoundry - this.southBoundry + 1) + this.southBoundry)
+                        let coordinate = [randoX, randoY]
+                        while (this.validateCoordinate(coordinate)) {
+                            let randoX = Math.floor(Math.random() * (this.eastBoundry - this.westBoundry + 1) + this.westBoundry)
+                            let randoY = Math.floor(Math.random() * (this.northBoundry - this.southBoundry + 1) + this.southBoundry)
+                            coordinate = [randoX, randoY]
+                        }
+                        return coordinate
+                    }
+                    showCoordinates() {
+                        console.log(this.usedCoordinates)
+                    }
+                    checkBorders(coordinate) {
+                        // true means you can move
+                        if (coordinate[1] > this.northBoundry)
+                            return true
+                        else if (coordinate[1] < this.southBoundry)
+                            return true
+                        else if (coordinate[0] < this.westBoundry)
+                            return true
+                        else if (coordinate[0] > this.eastBoundry)
+                            return true
+                        else
+                            return false
+                        console.log('boundry check ok');
+                    }
+                }
+                class Point {
+                    static allPoints = [];
+                    constructor(userName, islandName, coordinate, energy) {
+                        this.userName = userName;
+                        this.energy = energy;
+                        this.islandName = islandName;
+                        this.coordinate = coordinate
+                        Point.allPoints.push(this);
+                    }
+                    updateEnergyBar(amount) {
+                        const energyBar = document.getElementById('energyBar')
+                        energyBar.setAttribute('aria-valuenow', '100')
+                        energyBar.style.width = amount + '%';
+                        energyBar.innerHTML = `% ${amount}`
+                    }
+                    adjustEnergy(amount) {
+                        this.energy = this.energy + amount
+                        this.updateEnergyBar(this.energy)
+                    }
+                    somethingIsHere(coordinate) {
+                        const whoIsThat = JSON.stringify(Point.allPoints).includes(JSON.stringify(coordinate));
+                        return whoIsThat
+                    }
+                    updateNarration(text) {
+                        const narrationBox = document.getElementById('narration')
+                        narrationBox.innerHTML = text
+                    }
+                    commonMovement() {
+                        playerOne.adjustEnergy(-1)
+                        if (this.energy == 0) {
+                            updateInterface(`you cannot move, energy level ${this.energy}`)
+                            alert(`you cannot move, energy level ${this.energy}`)
+                            location.reload()
+                        }
+                        updateInterface(`moving ${this.userName} to ${this.coordinate} <br> energy level ${this.energy}`)
+                        drawCartesianText(ctx, this.coordinate[0] * 20, this.coordinate[1] * 20, '*')
+                        if (islandOne.validateCoordinate(this.coordinate)) {
+                            for (let item of Point.allPoints) {
+                                if (JSON.stringify(item).includes(JSON.stringify(this.coordinate))) {
+                                    if (item.coordinate == this.coordinate) {
+                                        this.updateNarration(`${this.userName} you went backwards`)
+                                    } else if (item.userName == 'treasure') {
+                                        this.updateNarration(`YOU WON!  YOU FOUND THE THE ${item.userName}`)
+                                        alert(`you won!  you found the the ${item.userName}`)
+                                        location.reload()
+                                    } else if (item.userName == 'disaster') {
+                                        this.updateNarration(`you lose, found the ${item.userName}`)
+                                        alert(`you lose, found the ${item.userName}`)
+                                        location.reload()
+                                    } else if (item.userName == 'treasureMap') {
+                                        updateNotification(`you found the ${item.userName} `)
+                                        drawCartesianText(ctx, treasure.coordinate[0] * 20, treasure.coordinate[1] * 20, 'T')
+                                    } else if (item.userName == 'disasterMap') {
+                                        updateNotification(`you found the ${item.userName} `)
+                                        drawCartesianText(ctx, disaster.coordinate[0] * 20, disaster.coordinate[1] * 20, 'D')
+                                    } else if (item.userName == 'fruitMap') {
+                                        updateNotification(`you found the ${item.userName} `)
+                                        for (f of fruitDropLocations) {
+                                            drawCartesianText(ctx, f[0] * 20, f[1] * 20, 'F')
+                                        }
+                                    } else {
+                                        updateNotification(`you found a ${item.userName} tree`)
+                                        playerOne.adjustEnergy(10)
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    moveNorth() {
+                        this.coordinate = [this.coordinate[0], this.coordinate[1] += 1]
+                        if (islandOne.checkBorders(this.coordinate)) {
+                            updateInterface('you reached the north beach')
+                            this.coordinate = [this.coordinate[0], this.coordinate[1] -= 1]
+                        } else {
+                            this.commonMovement()
+                        }
+                    }
+                    moveSouth() {
+                        this.coordinate[1] -= 1
+                        if (islandOne.checkBorders(this.coordinate)) {
+                            updateInterface('you reached the south beach')
+                            this.coordinate[1] += 1
+                        } else {
+                            this.commonMovement()
+                        }
+                    }
+                    moveWest() {
+                        this.coordinate[0] -= 1
+                        if (islandOne.checkBorders(this.coordinate)) {
+                            updateInterface('you reached the west beach')
+                            this.coordinate[0] += 1
+                        } else {
+                            this.commonMovement()
+                        }
+                    }
+                    moveEast() {
+                        this.coordinate[0] += 1
+                        if (islandOne.checkBorders(this.coordinate)) {
+                            updateInterface('you reached the east beach')
+                            this.coordinate[0] -= 1
+                        } else {
+                            this.commonMovement()
+                        }
+                    }
+                }
+
+                function checkKey(e) {
+                    randoMessage(chipDiamond)
+                    // console.log(e.keyCode);
+                    switch (e.keyCode) {
+                        case 72:
+                            // case 37:
+                            playerOne.moveWest()
+                            break;
+                        case 75:
+                            // case 38:
+                            playerOne.moveNorth()
+                            break;
+                        case 76:
+                            // case 39:
+                            playerOne.moveEast()
+                            break;
+                        case 74:
+                            // case 40:
+                            playerOne.moveSouth()
+                            break;
+                    }
+                }
+
+                // chipDiamond = ['look at THIS', 'LOOK AT THAT', 'just look at it', 'would you look at this', 'well just look at it']
+                chipDiamond = ['watch out for disasters', 'find the treasure to win', 'fruit gives you energy', 'run out of energy and you lose', 'find the disaster map', 'there is a treasure map', 'find the fruit map']
+
+                function randoMessage(narrations) {
+                    var narrate = narrations[Math.floor(Math.random() * narrations.length)];
+                    playerOne.updateNarration(narrate)
+                }
+
+                function updateInterface(message) {
+                    const islandDisplay = document.getElementById('island')
+                    islandDisplay.innerHTML = message
+
+                }
+
+                function updateNotification(message) {
+                    const islandDisplay = document.getElementById('notification')
+                    islandDisplay.innerHTML = message
+
+                }
+
+                function updateIsland(x, y, message) {
+                    drawCartesianText(ctx, x, y, message)
+                }
+
+                document.onkeydown = checkKey;
+                const islandOne = new island('islandOne', 10, 10)
+
+                const playerOne = new Point('player_one', 'islandOne', [0, 0], 100);
+                islandOne.useCoordinate([0, 0])
+                let narrate = welcome = "hi I'm Chip Daimond I'll narrate your game, LOOK AT THAT! you woke up hungover on this random island - use hjkl to explore, hopefully you find the treasure not the disaster..."
+                playerOne.updateNarration(narrate)
+                updateInterface('starting at location 0,0')
+                playerOne.updateEnergyBar(playerOne.energy)
+                drawCartesianText(ctx, 0, 0, '*')
+
+
+                let treasureLocation = islandOne.generateCoordinate()
+                islandOne.useCoordinate(treasureLocation)
+                const treasure = new Point('treasure', 'islandOne', [treasureLocation[0], treasureLocation[1]], 0);
+                // console.log(treasureLocation[0], treasureLocation[1], 'treasure')
+                // drawCartesianText(ctx, treasureLocation[0] * 20, treasureLocation[1] * 20, 'treasure')
+
+                let disasterLocation = islandOne.generateCoordinate()
+                islandOne.useCoordinate(disasterLocation)
+                const disaster = new Point('disaster', 'islandOne', [disasterLocation[0], disasterLocation[1]], 0);
+                // console.log(disasterLocation[0], disasterLocation[1], 'disaster')
+                // drawCartesianText(ctx, disasterLocation[0] * 20, disasterLocation[1] * 20, 'disaster')
+
+                let treasureMapLocation = islandOne.generateCoordinate()
+                islandOne.useCoordinate(treasureMapLocation)
+                const treasureMap = new Point('treasureMap', 'islandOne', [treasureMapLocation[0], treasureMapLocation[1]], 0);
+
+                let disasterMapLocation = islandOne.generateCoordinate()
+                islandOne.useCoordinate(disasterMapLocation)
+                const disasterMap = new Point('disasterMap', 'islandOne', [disasterMapLocation[0], disasterMapLocation[1]], 0);
+
+                let fruitMapLocation = islandOne.generateCoordinate()
+                islandOne.useCoordinate(fruitMapLocation)
+                const fruitMap = new Point('fruitMap', 'islandOne', [fruitMapLocation[0], fruitMapLocation[1]], 0)
+
+                const fruit = ['banana', 'orange', 'pear', 'apple', 'almond', 'coconut', 'pineapple', 'cherry']
+                const fruitDropLocations = []
+                for (f of fruit) {
+                    const fruitLocation = islandOne.generateCoordinate()
+                    islandOne.useCoordinate(fruitLocation)
+                    let fruitDropName = f + "Drop"
+                    fruitDropName = new Point(f, 'islandOne', [fruitLocation[0], fruitLocation[1]], 0)
+                    fruitDropLocations.push([fruitLocation[0], fruitLocation[1]])
+                }
+                function cheat() {
+                    for (p of Point.allPoints) {
+                        console.log(p.userName, p.coordinate[0], p.coordinate[1])
+                    }
+                    console.log(fruitDropLocations)
+                }
+
+            };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+            integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+            crossorigin="anonymous"></script>
+    </body>
+
+</html>

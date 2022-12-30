@@ -43,7 +43,7 @@ function JulianYear() {
 
 function JulianWeek() {
   return (
-    <div>
+    <div style={{ color: "blue" }}>
       the julian week number is <br />
       {weekNumber} of 52
       <br />

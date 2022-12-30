@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 function MeditationCard() {
   return (
-    <Card style={{ width: "50%" }}>
+    <Card style={{ width: "80%" }}>
       <Card.Body>
         <Card.Title>Anapanasati</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">

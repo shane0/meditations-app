@@ -13,6 +13,11 @@ function HomeNav() {
       <Nav.Item as="li">
         <Nav.Link eventKey="link-2">Meditations</Nav.Link>
       </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link href="/meditations-app/games/ria.html" eventKey="link-3">
+          ria
+        </Nav.Link>
+      </Nav.Item>
     </Nav>
   );
 }

@@ -21,7 +21,22 @@ function App() {
           </Col>
           <Col>
             <h3>meditations</h3>
-            <MeditationCard />
+            <MeditationCard
+              title="anapanasati"
+              sub="breath all the way"
+              content="brackets the sense doors"
+              link="https://www.dhammatalks.org/suttas/MN/MN118.html"
+              linkname="sutta mn 18"
+              order="1"
+            />
+            <MeditationCard
+              title="illusion"
+              sub="concentration on distinction"
+              content="illusions are real for unreal, hapiness for suffering, permanent for impermanent"
+              link="https://youtu.be/2RavAQoqxOY"
+              linkname="garfield"
+              order="2"
+            />
           </Col>
           <Col>
             <h3>search & filter</h3>
@@ -30,6 +45,16 @@ function App() {
         </Row>
         <Row className="p-5">
           <hr />
+          <Col>
+            <a
+              className="App-link"
+              href="https://shanenull.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              birdup meditation session planner
+            </a>
+          </Col>
           <Col>
             <h3>space = emptiness</h3>
             <p>cojoined</p>
@@ -42,14 +67,6 @@ function App() {
             <br />
             <JulianDay />
             <br />
-            <a
-              className="App-link"
-              href="https://shanenull.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              birdup meditation session planner
-            </a>
           </Col>
         </Row>
       </Container>

@@ -1,19 +1,19 @@
+/* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Sequence from "../components/Order";
 
-function MeditationCard() {
+function MeditationCard(props) {
   return (
     <Card style={{ width: "80%" }}>
       <Card.Body>
-        <Card.Title>Anapanasati</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          the roots with the breath
-        </Card.Subtitle>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{props.sub}</Card.Subtitle>
         <Card.Text>
-          <p>Anapanasati</p>
+          <p>{props.content}</p>
+          <Sequence order={props.order} />
         </Card.Text>
-        <Card.Link href="#">dhammatalks</Card.Link>
-        <Card.Link href="#">plum village</Card.Link>
+        <Card.Link href={props.link}>{props.linkname}</Card.Link>
       </Card.Body>
     </Card>
   );

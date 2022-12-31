@@ -5,7 +5,7 @@ function MeditationSessionList() {
   return (
     <Card style={{ width: "80%" }}>
       <Card.Body>
-        <Card.Title>Sessions</Card.Title>
+        <Card.Title>session list</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
           focused collections
         </Card.Subtitle>

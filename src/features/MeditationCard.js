@@ -5,7 +5,7 @@ import Sequence from "../components/Order";
 
 function MeditationCard(props) {
   return (
-    <Card style={{ width: "80%" }}>
+    <Card style={{ width: "100%" }}>
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{props.sub}</Card.Subtitle>

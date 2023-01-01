@@ -1,6 +1,6 @@
 body {
   background-color: ghostwhite;
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 .App {
@@ -43,6 +43,11 @@ h1 h2 h3 h4 {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   padding: 5px;
+}
+
+.nav-right {
+  position: absolute;
+  right: 110px;
 }
 
 .card {

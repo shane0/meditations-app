@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 function MeditationFilter() {
   return (
-    <Card style={{ width: "80%" }}>
+    <Card style={{ width: "100%" }}>
       <Card.Body>
         <Card.Title>Filter</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">category</Card.Subtitle>

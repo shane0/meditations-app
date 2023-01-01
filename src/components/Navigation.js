@@ -5,21 +5,25 @@ function HomeNav() {
   return (
     <Nav defaultActiveKey="/home" as="ul">
       <Nav.Item as="li">
-        <Nav.Link href="/home">Home</Nav.Link>
+        <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link eventKey="link-1">Sessions</Nav.Link>
+        <Nav.Link href="https://birdup" eventKey="link-1">
+          birdup
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link eventKey="link-2">Meditations</Nav.Link>
+        <Nav.Link href="https://shanenull.com" eventKey="link-2">
+          sncom
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
         <Nav.Link href="/meditations-app/games/rma.html" eventKey="link-3">
-          ria
+          random meditaiton adventure
         </Nav.Link>
       </Nav.Item>
-      <Nav.Item>
-        <input style={{ align: "left" }}></input>
+      <Nav.Item className="nav-right">
+        <input value="search"></input>
       </Nav.Item>
     </Nav>
   );

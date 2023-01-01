@@ -1,3 +1,7 @@
+body {
+  background-color: ghostwhite;
+}
+
 .App {
   text-align: center;
 }
@@ -14,17 +18,27 @@
 }
 
 .App-link {
-  color: royalblue;
+  color: brown;
 }
 
 .container .row .col {
   align-items: center;
   text-align: center;
+  border-radius: 4px;
 }
+
+h1 h2 h3 h4 {
+  border: 2px;
+  border-radius: 6px;
+}
+
 .nav {
-  background-color: lightblue;
+  background-color: burlywood;
+  color: aquamarine;
   width: 100%;
   justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .card {
@@ -32,4 +46,16 @@
   margin-top: 10px;
   padding-top: 10px;
   align-items: center;
+  background-color: lightskyblue;
+}
+
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.anapana {
+  background-color: gainsboro;
+  color: indianred;
 }

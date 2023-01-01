@@ -7,6 +7,7 @@ import MeditationCard from "./features/MeditationCard";
 import Header from "./components/Header";
 import MeditationFilter from "./features/MeditationFilter";
 import MeditationSessionList from "./features/MeditationSessionList";
+import AnapanaSatiCard from "./anapanasati/Anapanasati";
 import "./App.css";
 
 function App() {
@@ -21,18 +22,20 @@ function App() {
           </Col>
           <Col>
             <h3>meditations</h3>
-            <MeditationCard
+            <AnapanaSatiCard
               title="anapanasati"
               sub="breath all the way"
-              content="brackets the sense doors"
+              content="guards the 6 sense doors"
               link="https://www.dhammatalks.org/suttas/MN/MN118.html"
               linkname="sutta mn 18"
+              link2="https://plumvillage.org/library/sutras/discourse-on-the-full-awareness-of-breathing/"
+              linkname2="plum village"
               order="1"
             />
             <MeditationCard
               title="illusion"
               sub="concentration on distinction"
-              content="illusions are real for unreal, hapiness for suffering, permanent for impermanent"
+              content="illusions are real for unreal, sources of hapiness for sources of suffering, permanent for impermanent, dependant for independant"
               link="https://youtu.be/2RavAQoqxOY"
               linkname="garfield"
               order="2"

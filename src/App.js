@@ -9,6 +9,7 @@ import MeditationFilter from "./features/MeditationFilter";
 import MeditationSessionList from "./features/MeditationSessionList";
 import AnapanaSatiCard from "./anapanasati/Anapanasati";
 import AnapanaVideo from "./anapanasati/AnapanaVideo";
+import TagList from "./components/Tags";
 import "./App.css";
 
 function App() {
@@ -17,7 +18,10 @@ function App() {
       <Container>
         <Row>
           <Col>
-            <h3>sessions</h3>
+            <h3>search</h3>
+            <input></input>
+            <MeditationCard title="tags" content={<TagList />} />
+            <MeditationFilter />
             <MeditationSessionList />
           </Col>
           <Col>
@@ -32,6 +36,9 @@ function App() {
               linkname2="plum village"
               order="1"
             />
+          </Col>
+          <Col>
+            <h3>daily</h3>
             <MeditationCard
               title="illusion"
               sub="concentration on distinction"
@@ -40,15 +47,22 @@ function App() {
               linkname="garfield"
               order="2"
             />
-          </Col>
-          <Col>
-            <h3>search & filter</h3>
-            <MeditationFilter />
+            <MeditationCard
+              title="dzogchen"
+              sub="short moments many times"
+              content="continuous meditation reminders"
+              link="https://shanenull.com/urgyen.html"
+              linkname="urgyen slides"
+              link2="https://youtu.be/5fv7ZNYFD24"
+              linkname2="condensed video"
+              order="3"
+            />
           </Col>
         </Row>
+        <hr />
         <Row className="p-5">
-          <hr />
           <Col>
+            <h3>resources</h3>
             <a
               className="App-link"
               href="https://shanenull.com"
@@ -73,6 +87,8 @@ function App() {
           </Col>
         </Row>
         <Row>
+          <hr></hr>
+          <h1>videos</h1>
           <Col>
             <AnapanaVideo />
           </Col>

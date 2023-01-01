@@ -44,8 +44,6 @@ function App() {
           <Col>
             <h3>search & filter</h3>
             <MeditationFilter />
-
-            <AnapanaVideo />
           </Col>
         </Row>
         <Row className="p-5">
@@ -72,6 +70,22 @@ function App() {
             <br />
             <JulianDay />
             <br />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <AnapanaVideo />
+          </Col>
+          <Col>
+            <h1>recollection</h1>
+            <iframe
+              className="video-alt"
+              src="https://www.youtube.com/embed/aaNq1DenFh8"
+              title="0303n4b1 The Five Recollections \ \ Thanissaro Bhikkhu \ \ Dhamma Talks"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </Col>
         </Row>
         <Header />

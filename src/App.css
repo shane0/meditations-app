@@ -77,4 +77,11 @@ ul.no-bullets {
   height: 100%;
   width: 100%;
   position: absolute;
+  border-radius: 5px;
+}
+
+.video-alt {
+  height: 90%;
+  width: 90%;
+  border-radius: 5px;
 }

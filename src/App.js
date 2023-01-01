@@ -18,11 +18,10 @@ function App() {
       <Container>
         <Row>
           <Col>
-            <h3>search</h3>
-            <input></input>
+            <h3>sessions</h3>
+            <MeditationSessionList />
             <MeditationCard title="tags" content={<TagList />} />
             <MeditationFilter />
-            <MeditationSessionList />
           </Col>
           <Col>
             <h3>meditations</h3>

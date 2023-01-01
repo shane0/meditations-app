@@ -18,6 +18,9 @@ function HomeNav() {
           ria
         </Nav.Link>
       </Nav.Item>
+      <Nav.Item>
+        <input style={{ align: "left" }}></input>
+      </Nav.Item>
     </Nav>
   );
 }

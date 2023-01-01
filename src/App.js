@@ -90,6 +90,14 @@ function App() {
           <h1>videos</h1>
           <Col>
             <AnapanaVideo />
+            <br></br>
+            <iframe
+              className="video-alt"
+              src="https://www.youtube.com/embed/2RavAQoqxOY"
+              title="Primordial confusion"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
           </Col>
           <Col>
             <h1>recollection</h1>

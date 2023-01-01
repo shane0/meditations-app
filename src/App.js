@@ -47,6 +47,14 @@ function App() {
               order="2"
             />
             <MeditationCard
+              title="satipatthana"
+              sub="establishing mindfulness"
+              content=""
+              link="https://www.dhammatalks.org/suttas/MN/MN10.html"
+              linkname="mn 10"
+              order="2"
+            />
+            <MeditationCard
               title="dzogchen"
               sub="short moments many times"
               content="continuous meditation reminders"

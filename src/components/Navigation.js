@@ -8,7 +8,7 @@ function HomeNav() {
         <Nav.Link href="/">Home</Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link href="https://birdup" eventKey="link-1">
+        <Nav.Link href="https://birdup.com" eventKey="link-1">
           birdup
         </Nav.Link>
       </Nav.Item>

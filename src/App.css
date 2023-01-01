@@ -1,5 +1,6 @@
 body {
   background-color: ghostwhite;
+  padding-top: 70px;
 }
 
 .App {
@@ -39,6 +40,9 @@ h1 h2 h3 h4 {
   justify-content: center;
   border-radius: 4px;
   overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  padding: 5px;
 }
 
 .card {
@@ -58,4 +62,19 @@ ul.no-bullets {
 .anapana {
   background-color: gainsboro;
   color: indianred;
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }

@@ -8,13 +8,13 @@ import Header from "./components/Header";
 import MeditationFilter from "./features/MeditationFilter";
 import MeditationSessionList from "./features/MeditationSessionList";
 import AnapanaSatiCard from "./anapanasati/Anapanasati";
+import AnapanaVideo from "./anapanasati/AnapanaVideo";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <Container>
-        <Header />
         <Row>
           <Col>
             <h3>sessions</h3>
@@ -44,6 +44,8 @@ function App() {
           <Col>
             <h3>search & filter</h3>
             <MeditationFilter />
+
+            <AnapanaVideo />
           </Col>
         </Row>
         <Row className="p-5">
@@ -72,6 +74,7 @@ function App() {
             <br />
           </Col>
         </Row>
+        <Header />
       </Container>
     </div>
   );

@@ -36,7 +36,7 @@ h1 h2 h3 h4 {
 .nav {
   background-color: burlywood;
   color: aquamarine;
-  width: 100%;
+  width: 90%;
   justify-content: center;
   border-radius: 4px;
   overflow: hidden;

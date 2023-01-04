@@ -7,9 +7,10 @@ import MeditationCard from "./features/MeditationCard";
 import Header from "./components/Header";
 import MeditationFilter from "./features/MeditationFilter";
 import MeditationSessionList from "./features/MeditationSessionList";
+import TagList from "./features/Tags";
 import AnapanaSatiCard from "./anapanasati/Anapanasati";
 import AnapanaVideo from "./anapanasati/AnapanaVideo";
-import TagList from "./components/Tags";
+
 import "./App.css";
 
 function App() {
@@ -70,6 +71,15 @@ function App() {
         <Row className="p-5">
           <Col>
             <h3>resources</h3>
+            <a
+              className="App-link"
+              href="https://www.rigpawiki.org/index.php?title=Nang_Jang"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              nang-jang
+            </a>
+            <br />
             <a
               className="App-link"
               href="https://shanenull.com"

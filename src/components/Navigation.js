@@ -5,10 +5,14 @@ function HomeNav() {
   return (
     <Nav defaultActiveKey="/home" as="ul">
       <Nav.Item as="li">
-        <Nav.Link href="/">Home</Nav.Link>
+        <Nav.Link href="https://shane0.github.io/meditations-app/">
+          Home
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link href="/about">About</Nav.Link>
+        <Nav.Link href="https://shane0.github.io/meditations-app/about">
+          About
+        </Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
         <Nav.Link href="https://birdup.info" eventKey="link-1">

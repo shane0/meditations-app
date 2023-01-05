@@ -10,6 +10,10 @@ import MeditationSessionList from "./features/MeditationSessionList";
 import TagList from "./features/Tags";
 import AnapanaSatiCard from "./anapanasati/Anapanasati";
 import AnapanaVideo from "./anapanasati/AnapanaVideo";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
 
 import "./App.css";
 
@@ -17,6 +21,19 @@ function App() {
   return (
     <div className="App">
       <Container>
+        <Row>
+          <Col>
+            <Router>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                </Routes>
+              </Suspense>
+            </Router>
+          </Col>
+        </Row>
+        <hr></hr>
         <Row>
           <Col>
             <h3>sessions</h3>
